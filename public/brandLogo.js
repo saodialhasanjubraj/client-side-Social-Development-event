@@ -1,0 +1,1 @@
+export const BrandLogo = 'https://i.postimg.cc/5N01jGSr/Gemini-Generated-Image-m6u747m6u747m6u7-removebg-preview.png'
