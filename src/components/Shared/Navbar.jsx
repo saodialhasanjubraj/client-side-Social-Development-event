@@ -1,8 +1,10 @@
-import React from "react";
+import React, { use } from "react";
 import { NavLink } from "react-router";
 import { BrandLogo } from "../../../public/brandLogo";
+import { AuthContext } from "../../provider/AuthContext";
 
 const Navbar = () => {
+  const { user } = use(AuthContext);
   const links = (
     <div className="flex lg:flex-row flex-col lg:gap-x-5 gap-x-0 gap-y-2 lg:gap-y-0">
       <li>
@@ -51,7 +53,7 @@ const Navbar = () => {
         <ul className="menu menu-horizontal px-1">{links}</ul>
       </div>
       <div className="navbar-end">
-        <a className="btn">Button</a>
+        <a className="btn">{user?"user in": "No user found"}</a>
       </div>
     </div>
   );

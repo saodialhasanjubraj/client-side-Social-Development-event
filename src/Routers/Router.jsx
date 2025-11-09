@@ -4,6 +4,8 @@ import Home from "../Pages/Home";
 import EventPage from "../Pages/EventPage";
 import UpcommingEvent from "../Pages/UpcommingEvent";
 import Login from "../Layout/Login";
+import Register from "../Layout/Register";
+import PrivatePage from "../Private/PrivatePage";
 
 export const router = createBrowserRouter([
   {
@@ -11,9 +13,17 @@ export const router = createBrowserRouter([
     Component: HomeLayout,
     children: [
       { path: "/", index: true, Component: Home },
-      { path: "/event", Component: EventPage },
+      {
+        path: "/event",
+        element: (
+          <PrivatePage>
+            <EventPage />
+          </PrivatePage>
+        ),
+      },
       { path: "/upcommingEvent", Component: UpcommingEvent },
       { path: "/login", Component: Login },
+      { path: "/register", Component: Register },
     ],
   },
 ]);

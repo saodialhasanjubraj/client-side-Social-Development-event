@@ -1,22 +1,28 @@
-import React, { useState } from "react";
+import React, { use, useState } from "react";
 import { FaRegEye, FaRegEyeSlash } from "react-icons/fa";
+import AuthProvider from "../provider/AuthProvider";
+import { AuthContext } from "../provider/AuthContext";
+import { Link } from "react-router";
 
 const Login = () => {
+  const { handleEmaillogin } = use(AuthContext);
   const handleForm = (e) => {
     e.preventDefault();
     console.log(e);
     const email = e.target.email.value;
     const password = e.target.password.value;
     console.log(email, password);
+    handleEmaillogin(email, password);
   };
   const [showPassword, setShowPassword] = useState(false);
+
   return (
     <div className="w-full flex items-center justify-center h-[60vh]">
       <div>
         <form onSubmit={handleForm}>
           <fieldset className="fieldset">
-            <label className="label">Email</label>
             
+            <label className="label">Email</label>
             <input
               name="email"
               type="email"
@@ -43,9 +49,11 @@ const Login = () => {
               />
             </div>
             <div>
-              <a className="link link-hover">Forgot password?</a>
+              <p>
+                Dont have an account? <Link className="text-blue-600 underline" to="/register">Sing up</Link>
+              </p>
             </div>
-            <button className="btn btn-neutral mt-4">Login</button>
+            <button className="btn btn-neutral mt-4">Sign up</button>
           </fieldset>
         </form>
       </div>
