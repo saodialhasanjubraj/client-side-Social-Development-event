@@ -4,7 +4,7 @@ import { BrandLogo } from "../../../public/brandLogo";
 
 const Navbar = () => {
   const links = (
-    <div className="flex lg:flex-row flex-col ">
+    <div className="flex lg:flex-row flex-col lg:gap-x-5 gap-x-0 gap-y-2 lg:gap-y-0">
       <li>
         <NavLink to="/">Home</NavLink>
       </li>
@@ -40,11 +40,12 @@ const Navbar = () => {
             tabIndex="-1"
             className="menu menu-sm dropdown-content bg-base-100 rounded-box z-1 mt-3 w-52 p-2 shadow"
           >
-{links}
-
+            {links}
           </ul>
         </div>
-        <a className="btn btn-ghost text-xl"><img src={BrandLogo} alt="" srcset="" className="h-10 w-10" /></a>
+        <a className="btn btn-ghost text-xl">
+          <img src={BrandLogo} alt="" srcset="" className="h-10 w-10" />
+        </a>
       </div>
       <div className="navbar-center hidden lg:flex">
         <ul className="menu menu-horizontal px-1">{links}</ul>
