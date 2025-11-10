@@ -1,9 +1,14 @@
-import React from 'react'
+import React from "react";
+import CreateEvent from "./Event Page Component/CreateEvent";
+import RecentEventList from "./Home Component/RecentEventList";
 
 const EventPage = () => {
   return (
-    <div>EventPage</div>
-  )
-}
+    <div>
+      <CreateEvent />
+      <RecentEventList/>
+    </div>
+  );
+};
 
-export default EventPage
+export default EventPage;

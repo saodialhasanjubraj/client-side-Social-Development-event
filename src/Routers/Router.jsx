@@ -15,11 +15,7 @@ export const router = createBrowserRouter([
       { path: "/", index: true, Component: Home },
       {
         path: "/event",
-        element: (
-          <PrivatePage>
-            <EventPage />
-          </PrivatePage>
-        ),
+        element: <EventPage />,
       },
       { path: "/upcommingEvent", Component: UpcommingEvent },
       { path: "/login", Component: Login },
