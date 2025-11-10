@@ -6,6 +6,7 @@ import {
   GoogleAuthProvider,
   signInWithEmailAndPassword,
   signInWithPopup,
+  signOut,
 } from "firebase/auth";
 import { auth } from "../../firebase.config";
 
@@ -22,7 +23,7 @@ const AuthProvider = ({ children }) => {
         console.log("Error.Message: ", error.message);
       });
   };
-
+  //* google singIN-Out
   const handleGoogleLogin = () => {
     const provider = new GoogleAuthProvider();
     return signInWithPopup(auth, provider)
@@ -30,8 +31,20 @@ const AuthProvider = ({ children }) => {
       .catch((error) => console.log(error));
   };
 
+  const handleSignOut = () => {
+    return signOut(auth)
+      .then((res) => setUser(res))
+      .catch((error) => console.log(error));
+  };
   const [user, setUser] = useState(null);
-  const shareData = { user, setUser, handleEmaillogin, handleEmailSingUp ,handleGoogleLogin};
+  const shareData = {
+    user,
+    setUser,
+    handleEmaillogin,
+    handleEmailSingUp,
+    handleGoogleLogin,
+    handleSignOut
+  };
   return <AuthContext value={shareData}>{children}</AuthContext>;
 };
 

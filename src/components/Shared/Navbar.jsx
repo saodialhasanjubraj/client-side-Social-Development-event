@@ -1,23 +1,24 @@
-import React, { use } from "react";
+import React, { use, useState } from "react";
 import { NavLink } from "react-router";
 import { BrandLogo } from "../../../public/brandLogo";
 import { AuthContext } from "../../provider/AuthContext";
 
 const Navbar = () => {
-  const { user } = use(AuthContext);
+  const { user, handleSignOut, handleGoogleLogin } = use(AuthContext);
   const links = (
     <div className="flex lg:flex-row flex-col lg:gap-x-5 gap-x-0 gap-y-2 lg:gap-y-0">
       <li>
         <NavLink to="/">Home</NavLink>
       </li>
       <li>
-        <NavLink to="/">Event Page</NavLink>
+        <NavLink to="/event">Event Page</NavLink>
       </li>
       <li>
         <NavLink to="/">UpComming Event</NavLink>
       </li>
     </div>
   );
+  const [dark, setDark] = useState(false);
   return (
     <div className="navbar bg-base-100 shadow-sm">
       <div className="navbar-start">
@@ -53,7 +54,20 @@ const Navbar = () => {
         <ul className="menu menu-horizontal px-1">{links}</ul>
       </div>
       <div className="navbar-end">
-        <a className="btn">{user?"user in": "No user found"}</a>
+        <div onClick={() => setDark(!dark)} className="theme-switcher">
+          {dark}
+        </div>
+        <a className="btn">
+          {user ? (
+            <button onClick={handleSignOut} className="btn">
+              Log Out
+            </button>
+          ) : (
+            <button onClick={handleGoogleLogin} className="btn">
+              Sign In
+            </button>
+          )}
+        </a>
       </div>
     </div>
   );

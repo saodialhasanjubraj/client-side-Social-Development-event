@@ -5,8 +5,9 @@ import { Navigate } from "react-router";
 const PrivatePage = ({ children }) => {
   const { user } = use(AuthContext);
   if (user) {
-    return { children };
-  } else <Navigate to="/register" />;
+    return children;
+  }
+  return <Navigate to="/register" />;
 };
 
 export default PrivatePage;
