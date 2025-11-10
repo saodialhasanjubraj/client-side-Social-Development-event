@@ -43,7 +43,7 @@ const AuthProvider = ({ children }) => {
     handleEmaillogin,
     handleEmailSingUp,
     handleGoogleLogin,
-    handleSignOut
+    handleSignOut,
   };
   return <AuthContext value={shareData}>{children}</AuthContext>;
 };
