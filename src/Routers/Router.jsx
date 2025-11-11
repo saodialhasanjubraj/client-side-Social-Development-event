@@ -18,8 +18,8 @@ export const router = createBrowserRouter([
         element: <EventPage />,
       },
       { path: "/upcommingEvent", Component: UpcommingEvent },
-      { path: "/login", Component: Login },
-      { path: "/register", Component: Register },
     ],
   },
+  { path: "/login", Component: Login },
+  { path: "/register", Component: Register },
 ]);

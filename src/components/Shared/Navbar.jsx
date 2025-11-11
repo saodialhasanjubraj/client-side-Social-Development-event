@@ -1,10 +1,10 @@
 import React, { use, useState } from "react";
-import { NavLink } from "react-router";
+import { Link, NavLink } from "react-router";
 import { BrandLogo } from "../../../public/brandLogo";
 import { AuthContext } from "../../provider/AuthContext";
 
 const Navbar = () => {
-  const { user, handleSignOut, handleGoogleLogin } = use(AuthContext);
+  const { userInfo, handleSignOut } = use(AuthContext);
   const links = (
     <div className="flex lg:flex-row flex-col lg:gap-x-5 gap-x-0 gap-y-2 lg:gap-y-0">
       <li>
@@ -58,13 +58,13 @@ const Navbar = () => {
           {dark}
         </div>
         <a className="btn">
-          {user ? (
+          {userInfo ? (
             <button onClick={handleSignOut} className="btn">
               Log Out
             </button>
           ) : (
-            <button onClick={handleGoogleLogin} className="btn">
-              Sign In
+            <button className="btn">
+              <Link to="/register"> Sign In</Link>
             </button>
           )}
         </a>

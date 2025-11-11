@@ -11,13 +11,19 @@ import {
 import { auth } from "../../firebase.config";
 
 const AuthProvider = ({ children }) => {
+  // Sign up with Email
   const handleEmailSingUp = (email, passowrd) => {
-    return createUserWithEmailAndPassword(auth, email, passowrd);
+    return createUserWithEmailAndPassword(auth, email, passowrd)
+      .then((result) => {
+        const person = result.user;
+        setUserInfo(person);
+      })
+      .catch((error) => console.log("Error from singUP user", error));
   };
-
+  //* log in with Email
   const handleEmaillogin = (email, passowrd) => {
     return signInWithEmailAndPassword(auth, email, passowrd)
-      .then((client) => setUser(client))
+      .then((client) => setUserInfo(client))
       .catch((error) => {
         console.log("Error.code: ", error.code);
         console.log("Error.Message: ", error.message);
@@ -27,19 +33,19 @@ const AuthProvider = ({ children }) => {
   const handleGoogleLogin = () => {
     const provider = new GoogleAuthProvider();
     return signInWithPopup(auth, provider)
-      .then((result) => setUser(result))
+      .then((result) => setUserInfo(result))
       .catch((error) => console.log(error));
   };
 
   const handleSignOut = () => {
     return signOut(auth)
-      .then((res) => setUser(res))
+      .then((res) => setUserInfo(res))
       .catch((error) => console.log(error));
   };
-  const [user, setUser] = useState(null);
+  const [userInfo, setUserInfo] = useState(null);
   const shareData = {
-    user,
-    setUser,
+    userInfo,
+    setUserInfo,
     handleEmaillogin,
     handleEmailSingUp,
     handleGoogleLogin,
