@@ -6,7 +6,7 @@ import "swiper/css";
 import "swiper/css/navigation";
 
 //* import required modules
-import { Autoplay, Pagination, Navigation } from "swiper/modules";
+import { Autoplay, Pagination } from "swiper/modules";
 
 // "https://i.postimg.cc/wMpD4F1c/aditi-gautam-6E0k2y-Nuk8c-unsplash.jpg",
 //   "https://i.postimg.cc/6qfnkRZY/annie-spratt-c-VEOh-JJm-EE-unsplash.jpg",
@@ -47,8 +47,7 @@ const HeroSection = () => {
         pagination={{
           clickable: true,
         }}
-        navigation={true}
-        modules={[Autoplay, Pagination, Navigation]}
+        modules={[Autoplay, Pagination]}
         className="mySwiper"
       >
         {images.map((img) => (

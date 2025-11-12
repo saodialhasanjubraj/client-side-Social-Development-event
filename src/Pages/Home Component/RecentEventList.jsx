@@ -9,11 +9,14 @@ const RecentEventList = () => {
     .then((result) => setData(result));
 
   return (
-    <div className="flex flex-col gap-y-2">
+    <div className="flex flex-col gap-y-2 text-white">
       {data.map((d) => (
-        <div className="w-full bg-black flex flex-col rounded-2xl px-5 py-2 ">
+        <div className="w-full bg-gray-400 flex flex-col rounded-2xl px-5 py-2 ">
           <div className="date-box w-full flex justify-end items-center gap-x-2 ">
-            <h1 className="flex items-center gap-x-2 bg-sky-400 px-5 py-1 rounded-bl-xl `mt-[-4px]` mr-[-20px]">
+            <h1
+              className="flex items-center gap-x-2 bg-sky-400 px-5 py-1 rounded-bl-xl `mt-[-4px]
+            `mr-[-20px]"
+            >
               <MdOutlineDateRange /> {d.time}
             </h1>
           </div>
@@ -28,6 +31,8 @@ const RecentEventList = () => {
               <h1>{d.eventType}</h1>
             </div>
           </div>
+          <h1>Author: {d.email}</h1>
+
           <p className="text-justify">
             {d.desription} Lorem ipsum dolor sit amet consectetur adipisicing
             elit. Vero magnam fugiat voluptatem libero et ipsam delectus

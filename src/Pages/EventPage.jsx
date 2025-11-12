@@ -6,7 +6,6 @@ const EventPage = () => {
   return (
     <div>
       <CreateEvent />
-      <RecentEventList/>
     </div>
   );
 };

@@ -6,21 +6,23 @@ import { AuthContext } from "../../provider/AuthContext";
 const Navbar = () => {
   const { userInfo, handleSignOut } = use(AuthContext);
   const links = (
-    <div className="flex lg:flex-row flex-col lg:gap-x-5 gap-x-0 gap-y-2 lg:gap-y-0">
+    <div className="flex lg:flex-row flex-col lg:gap-x-5 gap-x-0 gap-y-2 lg:gap-y-0 text-[18px]">
       <li>
         <NavLink to="/">Home</NavLink>
       </li>
       <li>
-        <NavLink to="/event">Event Page</NavLink>
+        <NavLink to="/event">Create Event</NavLink>
       </li>
       <li>
-        <NavLink to="/">UpComming Event</NavLink>
+        <NavLink to="/upcommingEvent">UpComming Event</NavLink>
       </li>
     </div>
   );
   const [dark, setDark] = useState(false);
+
+  console.log(userInfo);
   return (
-    <div className="navbar bg-base-100 shadow-sm">
+    <div className="navbar bg-base-100 border-b-2 mb-2.5">
       <div className="navbar-start">
         <div className="dropdown">
           <div tabIndex={0} role="button" className="btn btn-ghost lg:hidden">
@@ -57,17 +59,39 @@ const Navbar = () => {
         <div onClick={() => setDark(!dark)} className="theme-switcher">
           {dark}
         </div>
-        <a className="btn">
+        {userInfo?.email && (
+          <div className="dropdown dropdown-bottom z-10">
+            <div tabIndex={0} role="button" className="btn m-1">
+            <img src={userInfo.photoURL} alt="" className="h-8 w-8 rounded-full" />
+              {userInfo?.displayName}
+            </div>
+            <ul
+              tabIndex="-1"
+              className="dropdown-content menu bg-base-100 rounded-box z-1 w-70 p-2 shadow-sm"
+            >
+              <div className="flex gap-x-4 w-full ">
+                               <div>
+                  <li>User name: {userInfo.displayName}</li>
+                  <li>User email: {userInfo.email}</li>
+                </div>
+              </div>
+            </ul>
+          </div>
+        )}
+        <button className="btn bg-success">
           {userInfo ? (
-            <button onClick={handleSignOut} className="btn">
+            <button
+              onClick={handleSignOut}
+              className="btn bg-transparent border-none"
+            >
               Log Out
             </button>
           ) : (
-            <button className="btn">
+            <button className="btn bg-transparent border-none">
               <Link to="/register"> Sign In</Link>
             </button>
           )}
-        </a>
+        </button>
       </div>
     </div>
   );

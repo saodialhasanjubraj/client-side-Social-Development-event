@@ -51,7 +51,7 @@ const FeatureCard = () => {
       <h1 className="my-10 text-4xl text-center font-bold text-purple-600 underline">
         Feature Events
       </h1>
-      <div className="grid grid-cols-3 gap-x-4 gap-y-2">
+      <div className="grid grid-cols-1 lg:grid-cols-3 gap-x-4 gap-y-2">
         {cards.map((card) => (
           <div className="border-2 rounded-xl flex flex-col items-center px-10 py-3">
             <img

@@ -1,6 +1,5 @@
 import React, { use, useState } from "react";
 import { FaRegEye, FaRegEyeSlash } from "react-icons/fa";
-import AuthProvider from "../provider/AuthProvider";
 import { AuthContext } from "../provider/AuthContext";
 import { Link } from "react-router";
 
@@ -21,7 +20,6 @@ const Login = () => {
       <div>
         <form onSubmit={handleForm}>
           <fieldset className="fieldset">
-            
             <label className="label">Email</label>
             <input
               name="email"
@@ -50,7 +48,10 @@ const Login = () => {
             </div>
             <div>
               <p>
-                Dont have an account? <Link className="text-blue-600 underline" to="/register">Sing up</Link>
+                Dont have an account?{" "}
+                <Link className="text-blue-600 underline" to="/register">
+                  Sing up
+                </Link>
               </p>
             </div>
             <button className="btn btn-neutral mt-4">Sign up</button>

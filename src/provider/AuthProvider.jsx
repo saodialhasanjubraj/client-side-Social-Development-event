@@ -4,6 +4,7 @@ import { AuthContext } from "./AuthContext";
 import {
   createUserWithEmailAndPassword,
   GoogleAuthProvider,
+  onAuthStateChanged,
   signInWithEmailAndPassword,
   signInWithPopup,
   signOut,
@@ -11,6 +12,8 @@ import {
 import { auth } from "../../firebase.config";
 
 const AuthProvider = ({ children }) => {
+  const [userInfo, setUserInfo] = useState(null);
+
   // Sign up with Email
   const handleEmailSingUp = (email, passowrd) => {
     return createUserWithEmailAndPassword(auth, email, passowrd)
@@ -42,7 +45,10 @@ const AuthProvider = ({ children }) => {
       .then((res) => setUserInfo(res))
       .catch((error) => console.log(error));
   };
-  const [userInfo, setUserInfo] = useState(null);
+
+  //* user loging remember
+  onAuthStateChanged(auth, (user) => setUserInfo(user));
+
   const shareData = {
     userInfo,
     setUserInfo,
