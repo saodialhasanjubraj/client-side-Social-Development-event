@@ -6,6 +6,7 @@ import UpcommingEvent from "../Pages/UpcommingEvent";
 import Login from "../Layout/Login";
 import Register from "../Layout/Register";
 import PrivatePage from "../Private/PrivatePage";
+import EventDetails from "../components/EventDetails";
 
 export const router = createBrowserRouter([
   {
@@ -22,6 +23,11 @@ export const router = createBrowserRouter([
         ),
       },
       { path: "/upcommingEvent", Component: UpcommingEvent },
+      {
+        path: "/upcommingEvent/eventDetails/:id",
+        Component: EventDetails,
+        loader: () => fetch("http://localhost:5101/event"),
+      },
     ],
   },
   { path: "/login", Component: Login },

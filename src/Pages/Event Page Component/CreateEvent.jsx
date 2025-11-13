@@ -3,10 +3,9 @@ import { AuthContext } from "../../provider/AuthContext";
 import { ToastContainer, toast } from "react-toastify";
 const CreateEvent = () => {
   const { userInfo } = use(AuthContext);
-
+console.log(userInfo.email)
   const notify = () => toast("Your Form submit done");
 
-  console.log(userInfo, "emailInfo");
   const handleForm = (e) => {
     e.preventDefault();
     const title = e.target.title.value;
@@ -25,7 +24,8 @@ const CreateEvent = () => {
       location,
       eventType,
       thumbnilURL,
-      name, email
+      name,
+      email,
     };
 
     fetch("http://localhost:5101/event", {

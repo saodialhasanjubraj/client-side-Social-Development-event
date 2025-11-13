@@ -51,7 +51,7 @@ const Register = () => {
             />
             <div>
               <p className="link link-hover">
-                Have an account?{" "}
+                Have an account?
                 <Link className="text-blue-500 underline" to="/login">
                   Sign in
                 </Link>
