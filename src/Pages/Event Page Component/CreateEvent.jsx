@@ -40,9 +40,9 @@ const CreateEvent = () => {
       <div>
         <h1 className="text-3xl underline mb-10">Create Event Form</h1>
       </div>
-      <form className="w-full px-70" onSubmit={handleForm}>
+      <form className="w-full lg:px-70 px-2.5" onSubmit={handleForm}>
         <div className="w-full">
-          <div className="user-info flex w-full justify-between ">
+          <div className="user-info flex w-full justify-between lg:flex-row flex-col">
             <div className="user-name">
               <label htmlFor="">Name</label> <br />
               <input
@@ -66,7 +66,7 @@ const CreateEvent = () => {
             </div>
           </div>
 
-          <div className="flex  items-center justify-between">
+          <div className="flex lg:flex-row flex-col lg:items-center items-start justify-between">
             <div className="flex flex-col gap-y-2 mb-5 mt-5">
               <label className="title text-xl">Event Name*</label>
               <input
@@ -92,7 +92,7 @@ const CreateEvent = () => {
             </div>
           </div>
 
-          <div className="flex justify-between">
+          <div className="flex justify-between lg:flex-row flex-col">
             <fieldset className="fieldset">
               <select
                 name="eventType"

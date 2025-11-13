@@ -1,10 +1,11 @@
 import React, { use } from "react";
-import { Link } from "react-router";
+import { Link, useNavigate } from "react-router";
 import { AuthContext } from "../provider/AuthContext";
 import { FaGoogle } from "react-icons/fa";
 import { IoMdHome } from "react-icons/io";
 
 const Register = () => {
+  const navigate = useNavigate();
   const { handleEmailSingUp, handleGoogleLogin } = use(AuthContext);
 
   const handleSignUpEmail = (e) => {
@@ -13,7 +14,10 @@ const Register = () => {
     const photoURL = e.target.photoURL.value;
     const email = e.target.email.value;
     const password = e.target.password.value;
-    handleEmailSingUp(email, password);
+
+    handleEmailSingUp(email, password).then(() => {
+      navigate("/");
+    });
     console.log(name, photoURL, email, password);
   };
   return (

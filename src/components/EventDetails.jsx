@@ -6,6 +6,7 @@ const EventDetails = () => {
   const { id } = useParams();
   const data = useLoaderData();
 
+  console.log(data);
   const card = data.find((c) => c._id == id);
   const {
     _id,
@@ -19,24 +20,27 @@ const EventDetails = () => {
     email,
   } = card;
   return (
-    <div>
-      <div className="hero bg-base-200 min-h-screen">
-        <div className="hero-content flex-col lg:flex-row-reverse">
-          <div className="text-center lg:text-left">
-            <h1 className="text-2xl font-bold">{title}</h1>
-            <h1>Author: {name}</h1>
-            <h1>Author-Email: {email}</h1>
-            <div className="location-date">
-              <h1 className="flex gap-2 items-center">
-                <FaLocationPin /> <span className="font-bold">{location}</span>
-              </h1>
-            </div>
-          </div>
-          <div className="card bg-base-100 w-full max-w-sm shrink-0 shadow-2xl">
-            <div className="card-body h-50 w-50 bg-purple-500"></div>
+    <div className=" bg-base-200 mt-10">
+      <div className="hero w-full flex pl-20 pr-25 gap-x-5 justify-between items-center lg:flex-row flex-col">
+        <img
+          className="h-80 w-130 rounded-2xl"
+          src="https://i.postimg.cc/bdXY9Fr4/pexels-cottonbro-7097455.jpg"
+          alt=""
+          srcset=""
+        />
+
+        <div className="text-center lg:text-left">
+          <h1 className="text-2xl font-bold w-100 mb-2.5">{title}</h1>
+          <h1 className="mb-2.5">Author: {name}</h1>
+          <h1 className="mb-2.5">Author-Email: {email}</h1>
+          <div className="location-date mt-2.5">
+            <h1 className="flex gap-2 items-center">
+              <FaLocationPin /> <span className="font-bold">{location}</span>
+            </h1>
           </div>
         </div>
       </div>
+      <p className="mt-10 text-justify px-2.5 lg:px-30">{description} </p>
     </div>
   );
 };

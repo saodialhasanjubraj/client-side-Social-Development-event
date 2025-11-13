@@ -1,9 +1,11 @@
 import React, { use, useState } from "react";
 import { FaRegEye, FaRegEyeSlash } from "react-icons/fa";
 import { AuthContext } from "../provider/AuthContext";
-import { Link } from "react-router";
+import { Link, useLocation, useNavigate } from "react-router";
 
 const Login = () => {
+  const location = useLocation();
+  const navigate = useNavigate();
   const { handleEmaillogin } = use(AuthContext);
   const handleForm = (e) => {
     e.preventDefault();
@@ -11,7 +13,9 @@ const Login = () => {
     const email = e.target.email.value;
     const password = e.target.password.value;
     console.log(email, password);
-    handleEmaillogin(email, password);
+    handleEmaillogin(email, password).then(() => {
+      navigate(location.state || "/");
+    });
   };
   const [showPassword, setShowPassword] = useState(false);
 
@@ -54,7 +58,7 @@ const Login = () => {
                 </Link>
               </p>
             </div>
-            <button className="btn btn-neutral mt-4">Sign up</button>
+            <button className="btn btn-neutral mt-4">Sign in</button>
           </fieldset>
         </form>
       </div>

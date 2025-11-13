@@ -26,7 +26,8 @@ export const router = createBrowserRouter([
       {
         path: "/upcommingEvent/eventDetails/:id",
         Component: EventDetails,
-        loader: () => fetch("https://social-development-event.vercel.app"),
+        loader: () =>
+          fetch("https://social-development-event.vercel.app/event"),
       },
     ],
   },

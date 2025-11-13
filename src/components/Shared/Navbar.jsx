@@ -48,7 +48,7 @@ const Navbar = () => {
           </div>
           <ul
             tabIndex="-1"
-            className="menu menu-sm dropdown-content bg-base-100 rounded-box z-1 mt-3 w-52 p-2 shadow"
+            className="menu menu-sm dropdown-content bg-base-100 rounded-box z-10 mt-3 w-52 p-2 shadow "
           >
             {links}
           </ul>
@@ -61,8 +61,8 @@ const Navbar = () => {
         <ul className="menu menu-horizontal px-1">{links}</ul>
       </div>
       <div className="navbar-end">
-        <button className="btn" onClick={() => setDark(!dark)}>
-          {dark ? <FaSun /> : <MdDarkMode />}
+        <button className="btn bg-transparent border-none shadow-none" onClick={() => setDark(!dark)}>
+          {dark ? <FaSun size={'20px'} /> : <MdDarkMode size={'20px'} />}
         </button>
         {userInfo?.email && (
           <div className="dropdown dropdown-bottom z-10">
