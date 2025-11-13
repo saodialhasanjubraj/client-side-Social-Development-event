@@ -3,7 +3,7 @@ import { AuthContext } from "../../provider/AuthContext";
 import { ToastContainer, toast } from "react-toastify";
 const CreateEvent = () => {
   const { userInfo } = use(AuthContext);
-console.log(userInfo.email)
+  console.log(userInfo.email);
   const notify = () => toast("Your Form submit done");
 
   const handleForm = (e) => {
@@ -28,7 +28,7 @@ console.log(userInfo.email)
       email,
     };
 
-    fetch("http://localhost:5101/event", {
+    fetch("https://social-development-event.vercel.app/event", {
       method: "POST",
       headers: { "content-type": "Application/json" },
       body: JSON.stringify(newEvent),
@@ -61,6 +61,7 @@ console.log(userInfo.email)
                 type="text"
                 name="email"
                 id=""
+                required
               />
             </div>
           </div>

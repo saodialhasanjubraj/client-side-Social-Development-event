@@ -16,6 +16,8 @@ const SomeOfOurMemory = () => {
     "https://i.postimg.cc/fWVx5tkJ/pexels-shkrabaanthony-5215000.jpg",
     "https://i.postimg.cc/fWVx5tkH/pexels-shvetsa-5231224.jpg",
     "https://i.postimg.cc/8k7hwJsx/the-tampa-bay-estuary-program-Ic-UQNza-Hrvg-unsplash.jpg",
+
+  
   ];
 
   return (

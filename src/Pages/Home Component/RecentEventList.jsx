@@ -5,13 +5,14 @@ import { Link } from "react-router";
 
 const RecentEventList = () => {
   const [data, setData] = useState([]);
-  fetch("http://localhost:5101/event")
+  fetch("https://social-development-event.vercel.app/event")
     .then((res) => res.json())
     .then((result) => setData(result));
 
   return (
  
       <div className="flex flex-col gap-y-2 text-white">
+        <h1>Total Events: {data.length}</h1>
         {data.map((d) => (
              <Link to={`eventDetails/${d._id}`}>
           <div className="w-full bg-gray-400 flex flex-col rounded-2xl px-5 py-2 ">

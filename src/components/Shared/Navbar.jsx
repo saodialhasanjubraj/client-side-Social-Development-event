@@ -2,6 +2,8 @@ import React, { use, useState } from "react";
 import { Link, NavLink } from "react-router";
 import { BrandLogo } from "../../../public/brandLogo";
 import { AuthContext } from "../../provider/AuthContext";
+import { MdDarkMode } from "react-icons/md";
+import { FaSun } from "react-icons/fa6";
 
 const Navbar = () => {
   const { userInfo, handleSignOut } = use(AuthContext);
@@ -19,7 +21,10 @@ const Navbar = () => {
     </div>
   );
   const [dark, setDark] = useState(false);
-
+  const html = document.querySelector("html");
+  dark
+    ? html.setAttribute("data-theme", "white")
+    : html.setAttribute("data-theme", "dark");
   console.log(userInfo);
   return (
     <div className="navbar bg-base-100 border-b-2 mb-2.5">
@@ -56,13 +61,17 @@ const Navbar = () => {
         <ul className="menu menu-horizontal px-1">{links}</ul>
       </div>
       <div className="navbar-end">
-        <div onClick={() => setDark(!dark)} className="theme-switcher">
-          {dark}
-        </div>
+        <button className="btn" onClick={() => setDark(!dark)}>
+          {dark ? <FaSun /> : <MdDarkMode />}
+        </button>
         {userInfo?.email && (
           <div className="dropdown dropdown-bottom z-10">
             <div tabIndex={0} role="button" className="btn m-1">
-            <img src={userInfo.photoURL} alt="" className="h-8 w-8 rounded-full" />
+              <img
+                src={userInfo?.photoURL}
+                alt=""
+                className="h-8 w-8 rounded-full"
+              />
               {userInfo?.displayName}
             </div>
             <ul
@@ -70,7 +79,7 @@ const Navbar = () => {
               className="dropdown-content menu bg-base-100 rounded-box z-1 w-84 p-2 shadow-sm"
             >
               <div className="flex gap-x-4 w-full ">
-                               <div>
+                <div>
                   <li>User name: {userInfo.displayName}</li>
                   <li>User email: {userInfo.email}</li>
                 </div>
@@ -82,12 +91,12 @@ const Navbar = () => {
           {userInfo ? (
             <button
               onClick={handleSignOut}
-              className="btn bg-transparent border-none"
+              className="btn bg-transparent border-none shadow-none"
             >
               Log Out
             </button>
           ) : (
-            <button className="btn bg-transparent border-none">
+            <button className="btn bg-transparent border-none shadow-none">
               <Link to="/register"> Sign In</Link>
             </button>
           )}
